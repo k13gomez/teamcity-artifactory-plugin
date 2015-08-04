@@ -52,7 +52,7 @@ public class RunnerParameterKeys {
     public final static String BUILD_DEPENDENCIES = PREFIX + "buildDependencies";
     public final static String ENABLE_RELEASE_MANAGEMENT = PREFIX + "enableReleaseManagement";
     public final static String VCS_TAG_BASE_URL_OR_NAME = PREFIX + "vcsTagsBaseUrlOrName";
-    public final static String GIT_RELEASE_BRANCH_NAME_PREFIX = PREFIX + "gitReleaseBranchNamePrefix";
+    public final static String VCS_BRANCH_BASE_URL_OR_NAME = PREFIX + "vcsBranchesBaseUrlOrName";
     public final static String ALTERNATIVE_MAVEN_GOALS = PREFIX + "alternativeMavenGoals";
     public final static String ALTERNATIVE_MAVEN_OPTIONS = PREFIX + "alternativeMavenOptions";
     public final static String DEFAULT_MODULE_VERSION_CONFIGURATION = PREFIX + "defaultModuleVersionConfiguration";

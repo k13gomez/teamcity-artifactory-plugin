@@ -76,9 +76,9 @@ public abstract class BaseReleaseManagementTab extends BuildTypeTab {
         ReleaseManagementConfigModel managementConfig = getReleaseManagementConfigModel();
 
         Map<String, String> parameters = buildRunner.getParameters();
-        if (parameters.containsKey(RunnerParameterKeys.GIT_RELEASE_BRANCH_NAME_PREFIX)) {
-            managementConfig.setGitReleaseBranchNamePrefix(
-                    parameters.get(RunnerParameterKeys.GIT_RELEASE_BRANCH_NAME_PREFIX));
+        if (parameters.containsKey(RunnerParameterKeys.VCS_BRANCH_BASE_URL_OR_NAME)) {
+            managementConfig.setVcsBranchBaseUrlOrName(
+                    parameters.get(RunnerParameterKeys.VCS_BRANCH_BASE_URL_OR_NAME));
         }
         if (parameters.containsKey(RunnerParameterKeys.VCS_TAG_BASE_URL_OR_NAME)) {
             managementConfig.setVcsTagBaseUrlOrName(parameters.get(RunnerParameterKeys.VCS_TAG_BASE_URL_OR_NAME));

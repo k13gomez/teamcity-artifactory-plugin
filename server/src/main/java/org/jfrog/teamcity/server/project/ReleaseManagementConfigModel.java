@@ -33,7 +33,7 @@ public abstract class ReleaseManagementConfigModel {
     protected String currentVersion = DEFAULT_CURRENT_VERSION;
 
     protected String vcsTagBaseUrlOrName = "";
-    protected String gitReleaseBranchNamePrefix;
+    protected String vcsBranchBaseUrlOrName = "";
     protected boolean svnVcs = false;
     private String defaultStagingRepository;
     private String defaultModuleVersionConfiguration;
@@ -92,8 +92,8 @@ public abstract class ReleaseManagementConfigModel {
 
     public abstract String getDefaultReleaseBranch();
 
-    public void setGitReleaseBranchNamePrefix(String gitReleaseBranchNamePrefix) {
-        this.gitReleaseBranchNamePrefix = gitReleaseBranchNamePrefix;
+    public void setVcsBranchBaseUrlOrName(String vcsBranchBaseUrlOrName) {
+        this.vcsBranchBaseUrlOrName = vcsBranchBaseUrlOrName;
     }
 
     public void setVcsTagBaseUrlOrName(String vcsTagBaseUrlOrName) {
@@ -159,13 +159,21 @@ public abstract class ReleaseManagementConfigModel {
     public void setDefaultCheckoutBranch(BranchEx defaultCheckoutBranch) {
         this.defaultCheckoutBranch = defaultCheckoutBranch;
     }
+    
+    protected String getVcsTagBaseUrlOrName() {
+    	return getVcsSpecificBaseUrlOrName(this.vcsTagBaseUrlOrName);
+    }
+    
+    protected String getVcsBranchBaseUrlOrName() {
+    	return getVcsSpecificBaseUrlOrName(this.vcsBranchBaseUrlOrName);
+    }
 
-    protected String getVcsSpecificTagBaseUrlOrName() {
-        if (StringUtils.isBlank(vcsTagBaseUrlOrName)) {
+    private String getVcsSpecificBaseUrlOrName(String urlOrName) {
+        if (StringUtils.isBlank(urlOrName)) {
             return "";
         }
-        StringBuilder builder = new StringBuilder(vcsTagBaseUrlOrName);
-        if (svnVcs && !vcsTagBaseUrlOrName.endsWith("/")) {
+        StringBuilder builder = new StringBuilder(urlOrName);
+        if (svnVcs && !urlOrName.endsWith("/")) {
             builder.append("/");
         }
         return builder.toString();

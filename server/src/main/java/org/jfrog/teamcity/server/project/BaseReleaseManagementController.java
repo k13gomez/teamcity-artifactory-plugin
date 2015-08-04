@@ -119,10 +119,8 @@ public abstract class BaseReleaseManagementController extends BaseFormXmlControl
 
         handleVersioning(request, customParameters, errors);
 
-        if (gitVcs) {
-            handleCheckoutBranch(request, customParameters);
-            handleReleaseBranch(request, customParameters, errors);
-        }
+        handleCheckoutBranch(request, customParameters);
+        handleReleaseBranch(request, customParameters, errors);
 
         handleVcsSettings(request, customParameters, errors);
 

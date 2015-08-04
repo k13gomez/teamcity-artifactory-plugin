@@ -1,6 +1,5 @@
 package org.jfrog.teamcity.server.project.maven;
 
-import org.apache.commons.lang.StringUtils;
 import org.jfrog.teamcity.server.project.ReleaseManagementConfigModel;
 
 /**
@@ -10,13 +9,13 @@ public class MavenReleaseManagementConfigModel extends ReleaseManagementConfigMo
 
     @Override
     public String getDefaultReleaseBranch() {
-        return new StringBuilder(StringUtils.trimToEmpty(gitReleaseBranchNamePrefix)).append(rootArtifactId).append("-")
-                .append(getReleaseVersion()).toString();
+        StringBuilder defaultTagUrlBuilder = new StringBuilder(getVcsBranchBaseUrlOrName());
+        return defaultTagUrlBuilder.append(rootArtifactId).append("-").append(getReleaseVersion()).toString();
     }
 
     @Override
     public String getDefaultTagUrl() {
-        StringBuilder defaultTagUrlBuilder = new StringBuilder(getVcsSpecificTagBaseUrlOrName());
+        StringBuilder defaultTagUrlBuilder = new StringBuilder(getVcsTagBaseUrlOrName());
         return defaultTagUrlBuilder.append(rootArtifactId).append("-").append(getReleaseVersion()).toString();
     }
 }

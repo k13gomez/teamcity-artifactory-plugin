@@ -261,8 +261,8 @@ BS.artifactory = {
         var releaseManagementEnabled = $('org.jfrog.artifactory.selectedDeployableServer.enableReleaseManagement').checked;
         if (releaseManagementEnabled) {
             BS.Util.show($('vcsTagsBaseUrlOrName.container'));
-            BS.Util.show($('gitReleaseBranchNamePrefix.container'));
-            $('org.jfrog.artifactory.selectedDeployableServer.gitReleaseBranchNamePrefix').value = 'REL-BRANCH-';
+            BS.Util.show($('vcsBranchesBaseUrlOrName.container'));
+            $('org.jfrog.artifactory.selectedDeployableServer.vcsBranchesBaseUrlOrName').value = 'REL-BRANCH-';
             if (builderName == 'maven') {
                 BS.Util.show($('alternativeMavenGoals.container'));
                 BS.Util.show($('alternativeMavenOptions.container'));
@@ -277,8 +277,8 @@ BS.artifactory = {
         else {
             BS.Util.hide($('vcsTagsBaseUrlOrName.container'));
             $('org.jfrog.artifactory.selectedDeployableServer.vcsTagsBaseUrlOrName').value = '';
-            BS.Util.hide($('gitReleaseBranchNamePrefix.container'));
-            $('org.jfrog.artifactory.selectedDeployableServer.gitReleaseBranchNamePrefix').value = '';
+            BS.Util.hide($('vcsBranchesBaseUrlOrName.container'));
+            $('org.jfrog.artifactory.selectedDeployableServer.vcsBranchesBaseUrlOrName').value = '';
             BS.Util.hide($('alternativeMavenGoals.container'));
             $('org.jfrog.artifactory.selectedDeployableServer.alternativeMavenGoals').value = '';
             BS.Util.hide($('alternativeMavenOptions.container'));

@@ -32,6 +32,7 @@ public class SubversionCoordinator extends AbstractVcsCoordinator {
 
     private SubversionManager subversion;
     private boolean tagCreated;
+    private boolean branchCreated;
 
     public SubversionCoordinator(@NotNull BuildRunnerContext runner) {
         super(runner);
@@ -48,6 +49,11 @@ public class SubversionCoordinator extends AbstractVcsCoordinator {
             subversion.createTag(runner.getBuild().getCheckoutDirectory(), releaseParameters.getTagUrl(),
                     releaseParameters.getTagComment());
             tagCreated = true;
+        }
+        if (releaseParameters.isCreateReleaseBranch()) {
+        	subversion.createBranch(runner.getBuild().getCheckoutDirectory(), releaseParameters.getReleaseBranch(),
+        			releaseParameters.getTagComment());
+        	branchCreated = true;
         }
     }
 
@@ -71,6 +77,9 @@ public class SubversionCoordinator extends AbstractVcsCoordinator {
             subversion.safeRevertWorkingCopy(runner.getBuild().getCheckoutDirectory());
             if (tagCreated) {
                 subversion.safeRevertTag(releaseParameters.getTagUrl(), getRevertTagMessage());
+            }
+            if (branchCreated) {
+            	subversion.safeRevertBranch(releaseParameters.getReleaseBranch(), getRevertTagMessage());
             }
         }
     }

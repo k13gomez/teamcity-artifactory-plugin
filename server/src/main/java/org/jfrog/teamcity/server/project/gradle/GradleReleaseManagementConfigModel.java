@@ -1,6 +1,5 @@
 package org.jfrog.teamcity.server.project.gradle;
 
-import org.apache.commons.lang.StringUtils;
 import org.jfrog.teamcity.server.project.ReleaseManagementConfigModel;
 
 /**
@@ -10,12 +9,11 @@ public class GradleReleaseManagementConfigModel extends ReleaseManagementConfigM
 
     @Override
     public String getDefaultTagUrl() {
-        return new StringBuilder(getVcsSpecificTagBaseUrlOrName()).append(getReleaseVersion()).toString();
+        return new StringBuilder(getVcsTagBaseUrlOrName()).append(getReleaseVersion()).toString();
     }
 
     @Override
     public String getDefaultReleaseBranch() {
-        return new StringBuilder(StringUtils.trimToEmpty(gitReleaseBranchNamePrefix)).append(getReleaseVersion()).
-                toString();
+    	return new StringBuilder(getVcsBranchBaseUrlOrName()).append(getReleaseVersion()).toString();
     }
 }

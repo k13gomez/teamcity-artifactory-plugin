@@ -56,6 +56,19 @@ public class SubversionManager extends AbstractScmManager {
             throw new IOException(e.getMessage());
         }
     }
+    
+    public void createBranch(File workingCopy, String branchUrl, String commitMessage) throws IOException {
+        try {
+            SVNCopyClient copyClient = svnClientManager.getCopyClient();
+            SVNURL svnBranchUrl = SVNURL.parseURIEncoded(branchUrl);
+            log(String.format("Creating subversion branch: '%s' from '%s'", branchUrl, workingCopy.getAbsolutePath()));
+            SVNCopySource source = new SVNCopySource(SVNRevision.WORKING, SVNRevision.WORKING, workingCopy);
+            copyClient.doCopy(new SVNCopySource[]{source}, svnBranchUrl, false, false, true,
+                    commitMessage, null);
+        } catch (SVNException e) {
+            throw new IOException(e.getMessage());
+        }
+    }
 
     public void safeRevertTag(String tagUrl, String commitMessageSuffix) {
         try {
@@ -70,6 +83,22 @@ public class SubversionManager extends AbstractScmManager {
             }
         } catch (SVNException e) {
             log("Failed to revert '" + tagUrl + "': " + e.getLocalizedMessage());
+        }
+    }
+    
+    public void safeRevertBranch(String branchUrl, String commitMessageSuffix) {
+        try {
+            log("Reverting subversion branch: " + branchUrl);
+            SVNURL svnUrl = SVNURL.parseURIEncoded(branchUrl);
+            SVNCommitClient commitClient = svnClientManager.getCommitClient();
+            SVNCommitInfo commitInfo = commitClient.doDelete(new SVNURL[]{svnUrl},
+                    COMMENT_PREFIX + commitMessageSuffix);
+            SVNErrorMessage errorMessage = commitInfo.getErrorMessage();
+            if (errorMessage != null) {
+                log("Failed to revert '" + branchUrl + "': " + errorMessage.getFullMessage());
+            }
+        } catch (SVNException e) {
+            log("Failed to revert '" + branchUrl + "': " + e.getLocalizedMessage());
         }
     }
 

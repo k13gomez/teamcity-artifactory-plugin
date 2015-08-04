@@ -233,7 +233,7 @@
                          value="${managementConfig.defaultCheckoutBranch.name}"/>
 </div>
 
-<div style="${managementConfig.gitVcs ? '' : 'display: none'}">
+<div>
     <forms:checkbox name="org.jfrog.artifactory.releaseManagement.createReleaseBranch"
                     checked="${foundDefaultReleaseBranch}"
                     onclick="BS.local.defaultReleaseBranchCheckboxClicked()"/>
@@ -241,7 +241,7 @@
            for="org.jfrog.artifactory.releaseManagement.createReleaseBranch">Use release branch</label>
 
     <div>
-        <span class="smallNote" style="margin-left: 0">Flag whether to create a Git release branch.</span>
+        <span class="smallNote" style="margin-left: 0">Flag whether to create a VCS release branch.</span>
     </div>
     <table class="runnerFormTable" style="${foundDefaultReleaseBranch ? '' : 'display: none'}"
            id="releaseBranchTable">
@@ -253,7 +253,7 @@
             <td style="border-bottom: none">
                 <forms:textField name="org.jfrog.artifactory.releaseManagement.releaseBranch" className="longField"
                                  value="${managementConfig.defaultReleaseBranch}"/>
-                <span class="smallNote">The name of the Git release branch.</span>
+                <span class="smallNote">The name of the VCS release branch.</span>
             </td>
         </tr>
         <tr>

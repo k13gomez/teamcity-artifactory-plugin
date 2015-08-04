@@ -39,8 +39,8 @@
                 name="org.jfrog.artifactory.selectedDeployableServer.vcsTagsBaseUrlOrName" emptyValue="none"/>
         </div>
         <div class="nestedParameter">
-            Git release branch name prefix: <props:displayValue
-                name="org.jfrog.artifactory.selectedDeployableServer.gitReleaseBranchNamePrefix" emptyValue="none"/>
+            VCS branches base URL/prefix: <props:displayValue
+                name="org.jfrog.artifactory.selectedDeployableServer.vcsBranchesBaseUrlOrName" emptyValue="none"/>
         </div>
         <c:if test="${shouldDisplayMavenFields}">
             <div class="nestedParameter">

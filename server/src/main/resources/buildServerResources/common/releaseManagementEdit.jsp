@@ -61,17 +61,17 @@
     </td>
 </tr>
 
-<tr class="noBorder" id="gitReleaseBranchNamePrefix.container" style="${shouldDisplayFields ? '' : 'display: none;'}">
+<tr class="noBorder" id="vcsBranchesBaseUrlOrName.container" style="${shouldDisplayFields ? '' : 'display: none;'}">
     <th>
-        <label for="org.jfrog.artifactory.selectedDeployableServer.gitReleaseBranchNamePrefix">
-            Git release branch name prefix:
+        <label for="org.jfrog.artifactory.selectedDeployableServer.vcsBranchesBaseUrlOrName">
+            VCS branches base URL/prefix:
         </label>
     </th>
     <td>
-        <props:textProperty name="org.jfrog.artifactory.selectedDeployableServer.gitReleaseBranchNamePrefix"
+        <props:textProperty name="org.jfrog.artifactory.selectedDeployableServer.vcsBranchesBaseUrlOrName"
                             className="longField"/>
             <span class="smallNote">
-                The prefix of the release branch name (applicable only to Git).
+            	For Subversion this is the URL of the branches location, for Git this is the prefix of the branch.
             </span>
     </td>
 </tr>

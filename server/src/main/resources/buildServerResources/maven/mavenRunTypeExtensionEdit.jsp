@@ -64,7 +64,7 @@
                 $('org.jfrog.artifactory.selectedDeployableServer.disableAutoLicenseDiscovery').checked = false;
                 $('org.jfrog.artifactory.selectedDeployableServer.enableReleaseManagement').checked = false;
                 $('org.jfrog.artifactory.selectedDeployableServer.vcsTagsBaseUrlOrName').value = '';
-                $('org.jfrog.artifactory.selectedDeployableServer.gitReleaseBranchNamePrefix').value = '';
+                $('org.jfrog.artifactory.selectedDeployableServer.vcsBranchesBaseUrlOrName').value = '';
                 $('org.jfrog.artifactory.selectedDeployableServer.alternativeMavenGoals').value = '';
                 $('org.jfrog.artifactory.selectedDeployableServer.alternativeMavenOptions').value = '';
                 $('org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration').innerHTML = '';
@@ -95,7 +95,7 @@
                 BS.Util.hide($('disableAutoLicenseDiscovery.container'));
                 BS.Util.hide($('enableReleaseManagement.container'));
                 BS.Util.hide($('vcsTagsBaseUrlOrName.container'));
-                BS.Util.hide($('gitReleaseBranchNamePrefix.container'));
+                BS.Util.hide($('vcsBranchesBaseUrlOrName.container'));
                 BS.Util.hide($('alternativeMavenGoals.container'));
                 BS.Util.hide($('alternativeMavenOptions.container'));
                 BS.Util.hide($('defaultModuleVersionConfiguration.container'));
@@ -162,7 +162,7 @@
                         $('org.jfrog.artifactory.selectedDeployableServer.enableReleaseManagement').checked;
                 if (releaseManagementEnabled) {
                     BS.Util.show($('vcsTagsBaseUrlOrName.container'));
-                    BS.Util.show($('gitReleaseBranchNamePrefix.container'));
+                    BS.Util.show($('vcsBranchesBaseUrlOrName.container'));
                     BS.Util.show($('alternativeMavenGoals.container'));
                     BS.Util.show($('alternativeMavenOptions.container'));
                     BS.Util.show($('defaultModuleVersionConfiguration.container'));
